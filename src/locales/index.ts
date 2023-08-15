@@ -1,7 +1,7 @@
 import { I18n } from 'i18n-js';
 import { getLocales } from 'react-native-localize';
-import enUs from './en_US.json';
-import zhCn from './zh_CN.json';
+import enUs from './dicts/en_US.json';
+import zhCn from './dicts/zh_CN.json';
 
 const locale = getLocales()[0].languageTag.replace(/-/g, '_');
 
