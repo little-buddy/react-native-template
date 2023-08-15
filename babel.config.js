@@ -2,6 +2,14 @@ module.exports = {
 	presets: ['module:metro-react-native-babel-preset'],
 	plugins: [
 		[
+			'import',
+			{
+				libraryName: 'lodash',
+				libraryDirectory: '',
+				camel2DashComponentName: false,
+			},
+		],
+		[
 			'module-resolver',
 			{
 				root: ['./src/'],
