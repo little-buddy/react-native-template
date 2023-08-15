@@ -1,14 +1,14 @@
 import { I18n } from 'i18n-js';
 import { getLocales } from 'react-native-localize';
-import enUs from './dicts/en_US.json';
-import zhCn from './dicts/zh_CN.json';
+import en from './dicts/en.json';
+import zhHans from './dicts/zh-Hans.json';
 
-const locale = getLocales()[0].languageTag.replace(/-/g, '_');
+const locale = getLocales()[0].languageCode;
 
 const i18n = new I18n(
 	{
-		en_US: enUs,
-		zh_CN: zhCn,
+		en,
+		['zh-Hans']: zhHans,
 	},
 	{
 		defaultLocale: locale,

@@ -69,10 +69,10 @@ export default () => {
 				}}
 			>
 				<I18nText word="China" />
-				<TouchableHighlight onPress={() => changeLang('zh_CN')}>
+				<TouchableHighlight onPress={() => changeLang('zh-Hans')}>
 					<Text>中文</Text>
 				</TouchableHighlight>
-				<TouchableHighlight onPress={() => changeLang('en_US')}>
+				<TouchableHighlight onPress={() => changeLang('en')}>
 					<Text>英文</Text>
 				</TouchableHighlight>
 			</View>
