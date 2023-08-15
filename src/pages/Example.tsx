@@ -5,6 +5,7 @@ import {
 	Text,
 	View,
 	useColorScheme,
+	TouchableHighlight,
 } from 'react-native';
 import {
 	Colors,
@@ -13,6 +14,7 @@ import {
 	LearnMoreLinks,
 	ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { I18nText, changeLang } from '@/locales/component';
 
 type SectionProps = PropsWithChildren<{
 	title: string;
@@ -59,6 +61,22 @@ export default () => {
 			style={backgroundStyle}
 		>
 			<Header />
+			<View
+				style={{
+					flex: 1,
+					flexDirection: 'row',
+					justifyContent: 'space-around',
+				}}
+			>
+				<I18nText word="China" />
+				<TouchableHighlight onPress={() => changeLang('zh_CN')}>
+					<Text>中文</Text>
+				</TouchableHighlight>
+				<TouchableHighlight onPress={() => changeLang('en_US')}>
+					<Text>英文</Text>
+				</TouchableHighlight>
+			</View>
+
 			<View
 				style={{
 					backgroundColor: isDarkMode ? Colors.black : Colors.white,

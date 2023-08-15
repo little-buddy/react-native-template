@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import Home from '@/pages/home';
+
 interface Route {
 	name: string;
 	component: React.FC;
@@ -21,6 +22,4 @@ const createRoute = (
 	children,
 });
 
-export default [
-	/* Routers */
-];
+export default [createRoute('/home', 'home', Home)];

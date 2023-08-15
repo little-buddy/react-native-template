@@ -5,13 +5,10 @@
  * @format
  */
 
+import { SafeAreaView, StatusBar, Text, useColorScheme } from 'react-native';
+import 'react-native-devsettings';
+import { NavigationContainer } from '@react-navigation/native';
 import Example from '@/pages/Example';
-import {
-	SafeAreaView,
-	StatusBar,
-	StyleSheet,
-	useColorScheme,
-} from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -28,8 +25,9 @@ function App(): JSX.Element {
 				barStyle={isDarkMode ? 'light-content' : 'dark-content'}
 				backgroundColor={backgroundStyle.backgroundColor}
 			/>
-
-			<Example />
+			<NavigationContainer>
+				<Example />
+			</NavigationContainer>
 		</SafeAreaView>
 	);
 }
