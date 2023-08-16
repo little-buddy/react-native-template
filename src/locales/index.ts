@@ -19,7 +19,6 @@ const i18n = new I18n(
 
 export const changeLang = (lang: string) => {
 	i18n.locale = lang;
-	eventBus.emit(eventBus.EVENT_NAME.LANG);
 };
 
 export default i18n;

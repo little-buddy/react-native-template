@@ -3,11 +3,12 @@ import routes from './config';
 import i18n from '@/locales';
 import { useContext } from 'react';
 import { LanguageContext } from '@/locales/component';
+import { useLang } from '@/locales/componentRedux';
 
 const Tab = createBottomTabNavigator();
 
 export default () => {
-	useContext(LanguageContext);
+	useLang();
 	return (
 		<Tab.Navigator>
 			{routes.map(({ name, component }) => (
