@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useContext, useEffect } from 'react';
 import {
 	ScrollView,
 	StyleSheet,
@@ -14,7 +14,8 @@ import {
 	LearnMoreLinks,
 	ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { I18nText, changeLang } from '@/locales/component';
+import { I18nText, LanguageContext } from '@/locales/component';
+import { changeLang } from '@/locales';
 
 type SectionProps = PropsWithChildren<{
 	title: string;
@@ -55,6 +56,10 @@ export default () => {
 		backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
 	};
 
+	useEffect(() => {
+		console.log('re-render');
+	});
+
 	return (
 		<ScrollView
 			contentInsetAdjustmentBehavior="automatic"
@@ -68,7 +73,7 @@ export default () => {
 					justifyContent: 'space-around',
 				}}
 			>
-				<I18nText word="China" />
+				<I18nText scope="China" />
 				<TouchableHighlight onPress={() => changeLang('zh-Hans')}>
 					<Text>中文</Text>
 				</TouchableHighlight>

@@ -1,4 +1,11 @@
-import { useEffect, useState } from 'react';
+import {
+	PropsWithChildren,
+	createContext,
+	useEffect,
+	useState,
+	memo,
+	useContext,
+} from 'react';
 import { Text, TextProps } from 'react-native';
 import {
 	TranslateOptions,
@@ -12,12 +19,18 @@ import {
 import i18n from './index';
 import eventBus from '@/utils/event';
 
-const useI18nEffect = () => {
-	const [_, setCount] = useState(0);
+export const LanguageContext = createContext<{ lang: string }>({
+	lang: i18n.locale,
+});
+
+const MemoChild = memo(({ children }: PropsWithChildren) => children);
+
+export const LanguageProvider = ({ children }: PropsWithChildren) => {
+	const [_, update] = useState(0);
 
 	useEffect(() => {
 		const fn = () => {
-			setCount(c => c + 1);
+			update(c => c + 1);
 		};
 
 		eventBus.on(eventBus.EVENT_NAME.LANG, fn);
@@ -25,6 +38,12 @@ const useI18nEffect = () => {
 			eventBus.off(eventBus.EVENT_NAME.LANG, fn);
 		};
 	}, []);
+
+	return (
+		<LanguageContext.Provider value={{ lang: i18n.locale }}>
+			<MemoChild>{children}</MemoChild>
+		</LanguageContext.Provider>
+	);
 };
 
 interface I18nTextProps {
@@ -37,7 +56,7 @@ export const I18nText = ({
 	config,
 	...props
 }: I18nTextProps & TextProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.t(scope, config)}</Text>;
 };
@@ -52,7 +71,7 @@ export const I18nNumberFormat = ({
 	value,
 	...props
 }: I18nNumberFormatProps & TextProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.l(scope, value)}</Text>;
 };
@@ -66,7 +85,7 @@ export const I18nCurrency = ({
 	config,
 	...props
 }: { config: Partial<NumberToCurrencyOptions> } & I18nNumberProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.numberToCurrency(value, config)}</Text>;
 };
@@ -76,7 +95,7 @@ export const I18nPercentage = ({
 	config,
 	...props
 }: { config: Partial<NumberToPercentageOptions> } & I18nNumberProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.numberToPercentage(value, config)}</Text>;
 };
@@ -87,7 +106,7 @@ export const I18nDelimited = ({
 	config,
 	...props
 }: { config: Partial<NumberToDelimitedOptions> } & I18nNumberProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.numberToDelimited(value, config)}</Text>;
 };
@@ -98,7 +117,7 @@ export const I18nRounded = ({
 	config,
 	...props
 }: { config: Partial<NumberToRoundedOptions> } & I18nNumberProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.numberToRounded(value, config)}</Text>;
 };
@@ -109,7 +128,7 @@ export const I18nHumanSize = ({
 	config,
 	...props
 }: { config: Partial<NumberToHumanSizeOptions> } & I18nNumberProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.numberToHumanSize(value, config)}</Text>;
 };
@@ -120,7 +139,7 @@ export const I18nHuman = ({
 	config,
 	...props
 }: { config: Partial<NumberToHumanOptions> } & I18nNumberProps) => {
-	useI18nEffect();
+	useContext(LanguageContext);
 
 	return <Text {...props}>{i18n.numberToHuman(value, config)}</Text>;
 };

@@ -1,25 +1,31 @@
+import i18n from '@/locales';
+import Frineds from '@/pages/frineds';
 import Home from '@/pages/home';
+import Message from '@/pages/message';
+import Mine from '@/pages/mine';
 
 interface Route {
 	name: string;
 	component: React.FC;
-	path?: string;
 	meta?: Record<string, any>;
 	children?: Route[];
 }
 
 const createRoute = (
-	path: string,
 	name: string,
 	component: React.ComponentType<any>,
 	meta?: Record<string, any>,
 	children?: Route[]
 ) => ({
-	path,
 	name,
 	component,
 	meta,
 	children,
 });
 
-export default [createRoute('/home', 'home', Home)];
+export default [
+	createRoute('home', Home),
+	createRoute('friends', Frineds),
+	createRoute('message', Message),
+	createRoute('mine', Mine),
+];
