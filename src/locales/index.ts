@@ -7,18 +7,18 @@ import eventBus from '@/utils/event';
 const locale = getLocales()[0].languageCode;
 
 const i18n = new I18n(
-	{
-		en,
-		['zh-Hans']: zhHans,
-	},
-	{
-		defaultLocale: locale,
-		locale,
-	}
+  {
+    en,
+    ['zh-Hans']: zhHans,
+  },
+  {
+    defaultLocale: locale,
+    locale,
+  }
 );
 
 export const changeLang = (lang: string) => {
-	i18n.locale = lang;
+  i18n.locale = lang;
 };
 
 export default i18n;

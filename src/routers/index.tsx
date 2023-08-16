@@ -8,19 +8,19 @@ import { useLang } from '@/locales/componentRedux';
 const Tab = createBottomTabNavigator();
 
 export default () => {
-	useLang();
-	return (
-		<Tab.Navigator>
-			{routes.map(({ name, component }) => (
-				<Tab.Screen
-					name={name}
-					options={{
-						title: i18n.t(name),
-					}}
-					component={component}
-					key={name}
-				/>
-			))}
-		</Tab.Navigator>
-	);
+  useLang();
+  return (
+    <Tab.Navigator>
+      {routes.map(({ name, component }) => (
+        <Tab.Screen
+          name={name}
+          options={{
+            title: i18n.t(name),
+          }}
+          component={component}
+          key={name}
+        />
+      ))}
+    </Tab.Navigator>
+  );
 };
