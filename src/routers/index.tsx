@@ -1,13 +1,17 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import routes from './config';
 import i18n from '@/locales';
-import { useContext } from 'react';
-import { LanguageContext } from '@/locales/component';
+import { useEffect } from 'react';
 import { useLang } from '@/locales/componentRedux';
 
 const Tab = createBottomTabNavigator();
 
 export default () => {
+  /* Do it. */
+  useEffect(() => {
+    /* 关闭加载页 */
+  }, []);
+
   useLang();
   return (
     <Tab.Navigator>

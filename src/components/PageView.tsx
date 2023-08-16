@@ -1,8 +1,8 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, memo } from 'react';
 import { View, ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export default ({
+const PageView = ({
   children,
   style,
   ...props
@@ -24,3 +24,5 @@ export default ({
     </View>
   );
 };
+
+export default memo(PageView);
