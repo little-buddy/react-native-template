@@ -1,8 +1,9 @@
+import i18n from '@/locales';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	theme: 'light',
-	lang: 'en',
+	lang: i18n.locale,
 };
 
 const cnofigSlice = createSlice({
