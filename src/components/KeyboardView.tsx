@@ -1,27 +1,21 @@
-import { PropsWithChildren, useEffect, useMemo } from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Keyboard,
-  TouchableWithoutFeedback,
-  StyleSheet,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { PropsWithChildren, useEffect } from 'react';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import KeyboardManager from 'react-native-keyboard-manager';
 import {
   KeyboardController,
   AndroidSoftInputModes,
 } from 'react-native-keyboard-controller';
 
 export default ({ children }: PropsWithChildren) => {
-  const inset = useSafeAreaInsets();
-
-  const keyboardVerticalOffset = useMemo(
-    () => inset.top + inset.bottom,
-    [inset.top, inset.bottom]
-  );
-
   useEffect(() => {
+    if (Platform.OS === 'ios') {
+      KeyboardManager.setEnable(true);
+
+      return () => {
+        KeyboardManager.setEnable(false);
+      };
+    }
+
     KeyboardController.setInputMode(
       AndroidSoftInputModes.SOFT_INPUT_ADJUST_PAN
     );
@@ -29,25 +23,9 @@ export default ({ children }: PropsWithChildren) => {
   });
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={
-        Platform.OS === 'ios' ? keyboardVerticalOffset : 0
-      }
-    >
-      <TouchableWithoutFeedback
-        onPress={() => {
-          // In some ios, multiple inputs exist at the same time,
-          //  and clicking on the blank area does not return
-          if (Keyboard.isVisible()) {
-            Keyboard.dismiss();
-          }
-        }}
-      >
-        <ScrollView style={styles.container}>{children}</ScrollView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    <View style={styles.container}>
+      <ScrollView style={styles.container}>{children}</ScrollView>
+    </View>
   );
 };
 

@@ -20,6 +20,7 @@ export default () => {
           name={name}
           options={{
             title: i18n.t(name),
+            tabBarHideOnKeyboard: name === 'message',
           }}
           component={component}
           key={name}

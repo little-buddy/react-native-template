@@ -1,21 +1,24 @@
-import KeyboardView from '@/components/KeyboardView';
-import { View, TextInput, StyleSheet, Text, Button } from 'react-native';
+// import KeyboardView from '@/components/KeyboardView';
+import KeyboardView from '@/components/KeyboardAvoidView';
+import { View, TextInput, StyleSheet, Button } from 'react-native';
 
 const KeyboardAvoidingComponent = () => {
   return (
     <KeyboardView>
       <View style={styles.inner}>
-        <Text style={styles.header}>Header</Text>
         <TextInput style={styles.textInput} />
-        <View style={styles.textInput} />
         <TextInput style={styles.textInput} />
-        <View style={styles.textInput} />
         <TextInput style={styles.textInput} />
-        <View style={styles.textInput} />
         <TextInput style={styles.textInput} />
-        <View style={styles.textInput} />
         <TextInput style={styles.textInput} />
-        <View style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <TextInput style={styles.textInput} />
         <TextInput style={styles.textInput} />
         <View style={styles.btnContainer}>
           <Button title="Submit" onPress={() => null} />
