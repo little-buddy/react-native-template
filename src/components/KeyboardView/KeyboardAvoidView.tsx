@@ -1,49 +1,66 @@
-import { PropsWithChildren, useMemo } from 'react';
+import { PropsWithChildren, ReactInstance, memo } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
-  Keyboard,
-  TouchableWithoutFeedback,
   StyleSheet,
+  ViewProps,
+  ScrollView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export default ({ children }: PropsWithChildren) => {
+interface KeyboardInnerProps {
+  needNested?: boolean;
+  NestedComponent?: ReactInstance;
+  nestedProps?: any;
+}
+
+const KeyboardInner = memo(
+  ({
+    needNested,
+    NestedComponent,
+    nestedProps,
+    children,
+  }: PropsWithChildren<KeyboardInnerProps>) => {
+    const { style, ...props } = nestedProps;
+
+    return needNested ? (
+      // @ts-ignore
+      <NestedComponent style={[styles.container, style]} {...props}>
+        {children}
+      </NestedComponent>
+    ) : (
+      children
+    );
+  }
+);
+
+export default ({
+  needNested = true,
+  NestedComponent = ScrollView,
+  nestedProps = {},
+  children,
+  style,
+  ...props
+}: PropsWithChildren<KeyboardInnerProps & ViewProps>) => {
   const inset = useSafeAreaInsets();
-
-  const keyboardVerticalOffset = useMemo(
-    () => inset.top + inset.bottom,
-    [inset.top, inset.bottom]
-  );
-
-  // @deprecated
-  // useEffect(() => {
-  //   KeyboardController.setInputMode(
-  //     AndroidSoftInputModes.SOFT_INPUT_ADJUST_PAN
-  //   );
-  //   return () => KeyboardController.setDefaultMode();
-  // });
+  const keyboardVerticalOffset = inset.top + inset.bottom;
 
   return (
     <KeyboardAvoidingView
-      style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={
         Platform.OS === 'ios' ? keyboardVerticalOffset : 0
       }
+      style={[styles.container, style]}
+      {...props}
     >
-      <TouchableWithoutFeedback
-        onPress={() => {
-          // In some ios, multiple inputs exist at the same time,
-          //  and clicking on the blank area does not return
-          if (Keyboard.isVisible()) {
-            Keyboard.dismiss();
-          }
-        }}
+      <KeyboardInner
+        needNested={needNested}
+        NestedComponent={NestedComponent}
+        {...nestedProps}
       >
-        <ScrollView style={styles.container}>{children}</ScrollView>
-      </TouchableWithoutFeedback>
+        {children}
+      </KeyboardInner>
     </KeyboardAvoidingView>
   );
 };
