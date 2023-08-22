@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -8,10 +8,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import {
-  KeyboardController,
-  AndroidSoftInputModes,
-} from 'react-native-keyboard-controller';
 
 export default ({ children }: PropsWithChildren) => {
   const inset = useSafeAreaInsets();
@@ -21,6 +17,7 @@ export default ({ children }: PropsWithChildren) => {
     [inset.top, inset.bottom]
   );
 
+  // @deprecated
   // useEffect(() => {
   //   KeyboardController.setInputMode(
   //     AndroidSoftInputModes.SOFT_INPUT_ADJUST_PAN

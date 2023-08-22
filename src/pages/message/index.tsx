@@ -1,5 +1,5 @@
-// import KeyboardView from '@/components/KeyboardView';
-import KeyboardView from '@/components/KeyboardAvoidView';
+import KeyboardView from '@/components/KeyboardView';
+// import KeyboardView from '@/components/KeyboardView/KeyboardAvoidView';
 import { View, TextInput, StyleSheet, Button } from 'react-native';
 
 const KeyboardAvoidingComponent = () => {

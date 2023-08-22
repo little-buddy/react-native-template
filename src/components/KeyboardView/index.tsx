@@ -1,10 +1,6 @@
 import { PropsWithChildren, useEffect } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
-import {
-  KeyboardController,
-  AndroidSoftInputModes,
-} from 'react-native-keyboard-controller';
 
 export default ({ children }: PropsWithChildren) => {
   useEffect(() => {
@@ -15,11 +11,6 @@ export default ({ children }: PropsWithChildren) => {
         KeyboardManager.setEnable(false);
       };
     }
-
-    KeyboardController.setInputMode(
-      AndroidSoftInputModes.SOFT_INPUT_ADJUST_PAN
-    );
-    return () => KeyboardController.setDefaultMode();
   });
 
   return (
