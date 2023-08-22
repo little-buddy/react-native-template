@@ -9,7 +9,7 @@ const locale = getLocales()[0].languageCode;
 const i18n = new I18n(
   {
     en,
-    ['zh-Hans']: zhHans,
+    zh: zhHans,
   },
   {
     defaultLocale: locale,

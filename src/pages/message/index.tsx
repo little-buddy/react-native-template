@@ -1,8 +1,54 @@
-import PageView from '@/components/PageView';
-import { Text } from 'react-native';
+import KeyboardView from '@/components/KeyboardView';
+import { View, TextInput, StyleSheet, Text, Button } from 'react-native';
 
-export default () => (
-  <PageView>
-    <Text>Mine</Text>
-  </PageView>
-);
+const KeyboardAvoidingComponent = () => {
+  return (
+    <KeyboardView>
+      <View style={styles.inner}>
+        <Text style={styles.header}>Header</Text>
+        <TextInput style={styles.textInput} />
+        <View style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <View style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <View style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <View style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <View style={styles.textInput} />
+        <TextInput style={styles.textInput} />
+        <View style={styles.btnContainer}>
+          <Button title="Submit" onPress={() => null} />
+        </View>
+      </View>
+    </KeyboardView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  inner: {
+    paddingHorizontal: 24,
+    paddingTop: 24,
+    flex: 1,
+    justifyContent: 'space-around',
+  },
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
+  },
+  textInput: {
+    height: 40,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 36,
+  },
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 12,
+  },
+});
+
+export default KeyboardAvoidingComponent;
