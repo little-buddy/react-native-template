@@ -1,8 +1,7 @@
-import PageView from '@/components/PageView';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default () => (
-  <PageView>
-    <Text>Mine</Text>
-  </PageView>
+  <View>
+    <Text>检查权限 </Text>
+  </View>
 );
