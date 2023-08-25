@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PropsWithChildren, ReactInstance, memo } from 'react';
 import {
   KeyboardAvoidingView,

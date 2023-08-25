@@ -17,7 +17,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import RootComponent from '@/routers';
 import { persistor, store } from '@/store';
 
-__DEV__ && import('react-native-devsettings');
+// @see https://github.com/gusgard/react-native-devsettings/issues/5#issue-1866167579
+// __DEV__ && import('react-native-devsettings');
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';

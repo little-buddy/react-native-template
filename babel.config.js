@@ -1,5 +1,12 @@
+// react-native-app
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets: [
+    [
+      'module:metro-react-native-babel-preset',
+      // @see https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945
+      { useTransformReactJSXExperimental: true },
+    ],
+  ],
   plugins: [
     [
       'import',
@@ -30,5 +37,6 @@ module.exports = {
       },
     ],
     'react-native-reanimated/plugin',
+    'react-native-web',
   ],
 };

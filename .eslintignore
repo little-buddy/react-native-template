@@ -1,1 +1,4 @@
 src/assets/lottie
+config-overrides.js
+.babelrc
+babel.config.js

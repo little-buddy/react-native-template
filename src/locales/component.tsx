@@ -22,7 +22,7 @@ import eventBus from '@/utils/event';
 export const LanguageContext = createContext<{ lang: string }>({
   lang: i18n.locale,
 });
-
+// @ts-ignore
 const MemoChild = memo(({ children }: PropsWithChildren) => children);
 
 export const LanguageProvider = ({ children }: PropsWithChildren) => {
