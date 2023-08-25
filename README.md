@@ -45,3 +45,9 @@ ios: RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD
 android: isBlockingSynchronousMethod=true
 最终解决的方案就是使用 Flipper -> 它会完美兼容以上问题
 ```
+
+```
+突然发现一个有趣的api
+https://random.imagecdn.app/1920/1080
+免费随机生成一张图片，测试真的太有用了
+```
