@@ -3,9 +3,9 @@ import { PropsWithChildren, ReactInstance, memo } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
   StyleSheet,
   ViewProps,
-  ScrollView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -19,7 +19,7 @@ const KeyboardInner = memo(
   ({
     needNested,
     NestedComponent,
-    nestedProps,
+    nestedProps = {},
     children,
   }: PropsWithChildren<KeyboardInnerProps>) => {
     const { style, ...props } = nestedProps;
