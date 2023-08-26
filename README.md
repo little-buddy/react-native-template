@@ -83,7 +83,20 @@ plugin/jsx-runtime 是用来消除 react 必须引入的eslint警告的
 
 ```
 
+Compiling JS failed: 122980:12:invalid expression (possible JSX: pass -parse-jsx to parse) Buffer size 7162689 starts with: 766172205f5f42554e444c455f535441
+
+```
+web 端调通，跑原生端又遇到的问题，应该是jsx转译出现的问题
+删除 "useTransformReactJSXExperimental": true 即可
+```
+
 [参考社区](https://github.com/facebook/create-react-app/issues/11825#issuecomment-1000454644)
+
+### only default export is available soon
+
+```
+webpack5 开始不支持以 key 的形式从 json 中导出变量
+```
 
 ### 注意事项
 

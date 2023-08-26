@@ -1,12 +1,6 @@
 // react-native-app
 module.exports = {
-  presets: [
-    [
-      'module:metro-react-native-babel-preset',
-      // @see https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945
-      { useTransformReactJSXExperimental: true },
-    ],
-  ],
+  presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
       'import',
