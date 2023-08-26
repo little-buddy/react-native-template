@@ -1,4 +1,4 @@
-import KeyboardView from '@/components/KeyboardView';
+import KeyboardView from '@/components/KeyboardView/KeyboardAvoidView';
 // import KeyboardView from '@/components/KeyboardView/KeyboardAvoidView';
 import { View, TextInput, StyleSheet, Button } from 'react-native';
 

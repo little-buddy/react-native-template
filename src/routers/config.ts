@@ -1,4 +1,3 @@
-import i18n from '@/locales';
 import Frineds from '@/pages/frineds';
 import Home from '@/pages/home';
 import Message from '@/pages/message';

@@ -1,5 +1,5 @@
-import { useChangeLang, I18nText } from '@/locales/componentRedux';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { I18nText, useChangeLang } from '@/locales/componentRedux';
+import { Text, TouchableHighlight, View } from 'react-native';
 
 export default () => {
   const changeLang = useChangeLang();
@@ -14,7 +14,7 @@ export default () => {
         }}
       >
         <I18nText scope="China" />
-        <TouchableHighlight onPress={() => changeLang('zh-Hans')}>
+        <TouchableHighlight onPress={() => changeLang('zh')}>
           <Text>中文</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => changeLang('en')}>

@@ -37,6 +37,5 @@ module.exports = {
       },
     ],
     'react-native-reanimated/plugin',
-    'react-native-web',
   ],
 };

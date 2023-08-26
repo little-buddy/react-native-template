@@ -11,7 +11,7 @@ const path = require('path');
 const babelrc = require('./babel.config.js');
 
 module.exports = override(
-  addBabelPlugins(...babelrc.plugins),
+  addBabelPlugins(...babelrc.plugins, 'react-native-web'),
   addBabelPresets(...babelrc.presets),
   useBabelRc(),
   removeModuleScopePlugin()
