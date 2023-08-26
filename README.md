@@ -24,43 +24,36 @@ see [Issue](https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945)
       { useTransformReactJSXExperimental: true },
     ],
   ],
-```
-
-```
 npm i babel-plugin-react-native-web
 该插件对 react-native-web 下的目录指引有引导优化的作用
 ```
 
-### 错误 1
+## rn 转 web 过程中遇到的问题
+
+### which falls outside of the project src/ directory. Relative imports outside of src/ are not supported
 
 ```
-which falls outside of the project src/ directory. Relative imports outside of src/ are not supported
+customize-cra 添加 removeModuleScopePlugin()
 ```
 
-[解决方案](https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory)
+[参考社区](https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory)
 
-customize-cra 添加 `removeModuleScopePlugin()`
-
-### 错误 2
+### Duplicate **self prop found. You are most likely using the deprecated transform-react-jsx-self Babel plugin. Both **source and \_\_self are automatically set when using the automatic runtime. Please remove transform-react-jsx-source and transform-react-jsx-self from your Babel config
 
 ```
-Duplicate __self prop found. You are most likely using the deprecated transform-react-jsx-self Babel plugin. Both __source and __self are automatically set when using the automatic runtime. Please remove transform-react-jsx-source and transform-react-jsx-self from your Babel config
+由于和 web 共用一个babel.config.js，所以添加
+"useTransformReactJSXExperimental": true
+选项就可以了
+{
+  "presets": [["module:metro-react-native-babel-preset", { "useTransformReactJSXExperimental": true }]]
+}
 ```
 
-[解决方案](https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945)
+[参考社区](https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945)
 
-### 错误 3
-
-```
-对于文件内容依赖 react-native/Libraries/NewAppScreen
-[Error] Can't resolve 'react-native/Libraries/NewAppScreen'
-```
-
-### 错误 4
+### Error: Can't resolve 'react-native/Libraries/NewAppScreen'
 
 ```
-Error: Can't resolve 'react-native/Libraries/NewAppScreen'
-
 这个问题是因为react-native-web 没有支持这个文件的维护
 不过也能理解：react-native 包下的样例文件随时都会变，减少不必要的维护成本
 让 react-native-web 可以更lib一点
@@ -69,20 +62,18 @@ Error: Can't resolve 'react-native/Libraries/NewAppScreen'
 所以启动 react-native-web 的样例项目不要以官方demo为准
 ```
 
-### 错误 5
+### Attempted import error: 'DevSettings' is not exported from 'react-native' (imported as 'DevSettings').
 
 ```
-Attempted import error: 'DevSettings' is not exported from 'react-native' (imported as 'DevSettings').
-
 react-native-devsettings 模块依赖 DevSettings
 而 react-native-web 是放弃这个模块维护的
+
+所以要在 native 的入口文件去引用这个模块
 ```
 
-### 错误 6
+### [eslint] Plugin "react" was conflicted between ".eslintrc.js » plugin:react/jsx-runtime" and "BaseConfig » /Users/buddy/Documents/Coding/rngo/node_modules/eslint-config-react-app/base.js".
 
 ```
-[eslint] Plugin "react" was conflicted between ".eslintrc.js » plugin:react/jsx-runtime" and "BaseConfig » /Users/buddy/Documents/Coding/rngo/node_modules/eslint-config-react-app/base.js".
-
 React17 已经通过babel的形式去除了对于
 import React from 'react' 强制性引用
 plugin/jsx-runtime 是用来消除 react 必须引入的eslint警告的
@@ -92,16 +83,11 @@ plugin/jsx-runtime 是用来消除 react 必须引入的eslint警告的
 
 ```
 
-### 错误 7
-
-```
-Application "App" has not been registered
-```
+[参考社区](https://github.com/facebook/create-react-app/issues/11825#issuecomment-1000454644)
 
 ### 注意事项
 
 ```
-当区分 App.ts 是 web 还是 native 的时候，除 src 下文件之外的更新都会跳过错误
-所以项目能否运行还是依赖 src 下文件的状态，需要通过 src 下文件的变动来确定当前
-是否是一个非报错的状态
+web编译的时候，除 src 下文件之外的更新都会跳过错误显示编译成功
+所以web项目能否运行还是依赖 src 下文件的状态，需要通过 src 下文件的变动来确定当前是否是一个正确的状态
 ```
