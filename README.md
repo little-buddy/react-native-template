@@ -1,5 +1,7 @@
 # react-native-template
 
+[该项目支持在 web 端运行](https://github.com/little-buddy/react-native-template/tree/web)
+
 ### 基础功能库
 
 ```
