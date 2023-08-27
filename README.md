@@ -1,5 +1,9 @@
 # 现有 react-native 项目转 web 配置教程
 
+@See [doc](https://retool.com/blog/how-to-make-your-react-native-apps-work-on-the-web/)
+
+[index.html 模版](https://codesandbox.io/s/react-native-q4qymyp2l6?from-embed=&file=/public/index.html)
+
 ### 目录配置
 
 ```
