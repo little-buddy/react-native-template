@@ -10,7 +10,7 @@
     "prettier": "prettier --write src/**/*",
     "podi": "npx react-native setup-ios-permissions && npx pod-install",
     "start:web": "react-app-rewired start",
-    "start:build": "react-app-rewired build",
+    "build:web": "react-app-rewired build",
     "test": "jest"
   },
   "main": "src/index.js",

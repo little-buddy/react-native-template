@@ -1,4 +1,4 @@
-# 现有 react-native 项目转 web 配置教程
+# [![Netlify Status](https://api.netlify.com/api/v1/badges/bc65eeb5-b61d-475c-a386-d08ad5701559/deploy-status)](https://app.netlify.com/sites/rn-go/deploys) 现有 react-native 项目转 web 配置教程
 
 @See [doc](https://retool.com/blog/how-to-make-your-react-native-apps-work-on-the-web/)
 
