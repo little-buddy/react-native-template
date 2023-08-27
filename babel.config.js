@@ -30,6 +30,7 @@ module.exports = {
         },
       },
     ],
+    /* @warning must be listed last. */
     'react-native-reanimated/plugin',
   ],
 };
