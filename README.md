@@ -1,4 +1,4 @@
-# react-native-template
+# <img src="./android/app/src/main/res/mipmap-hdpi/ic_launcher.png" width="24" style="border-radius:4px" /> react-native-template
 
 [该项目支持在 web 端运行](https://github.com/little-buddy/react-native-template/tree/web)
 
