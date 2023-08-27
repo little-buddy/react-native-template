@@ -28,50 +28,44 @@ npm i babel-plugin-react-native-web
 该插件对 react-native-web 下的目录指引有引导优化的作用
 ```
 
-## rn 转 web 过程中遇到的问题
-
-### which falls outside of the project src/ directory. Relative imports outside of src/ are not supported
+## RN 转 web 额外配置项
 
 ```
 customize-cra 添加 removeModuleScopePlugin()
 ```
 
-[参考社区](https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory)
+[解决](https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory)
 
-### Duplicate **self prop found. You are most likely using the deprecated transform-react-jsx-self Babel plugin. Both **source and \_\_self are automatically set when using the automatic runtime. Please remove transform-react-jsx-source and transform-react-jsx-self from your Babel config
-
-```
-由于和 web 共用一个babel.config.js，所以添加
-"useTransformReactJSXExperimental": true
-选项就可以了
-{
-  "presets": [["module:metro-react-native-babel-preset", { "useTransformReactJSXExperimental": true }]]
-}
-```
-
-[参考社区](https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945)
-
-### Error: Can't resolve 'react-native/Libraries/NewAppScreen'
+which falls outside of the project src/ directory.
+Relative imports outside of src/ are not supported.
 
 ```
-这个问题是因为react-native-web 没有支持这个文件的维护
-不过也能理解：react-native 包下的样例文件随时都会变，减少不必要的维护成本
-让 react-native-web 可以更lib一点
+presets 添加 "useTransformReactJSXExperimental": true 配置项
 
+注意 react-native 和 web 对于jsx 的一些配置应该是有区别的，所以仅对web端的配置添加该选项
+```
+
+[解决](https://github.com/nrwl/nx/issues/14407#issuecomment-1439327945)
+
+Duplicate **self prop found. You are most likely using the deprecated transform-react-jsx-self Babel plugin. Both **source and \_\_self are automatically set when using the automatic runtime. Please remove transform-react-jsx-source and transform-react-jsx-self from your Babel config
+
+```
 把与 'react-native/Libraries/NewAppScreen' 相关依赖从项目中删除就可以
-所以启动 react-native-web 的样例项目不要以官方demo为准
+
+因为react-native-web 没有支持这个文件的维护
 ```
 
-### Attempted import error: 'DevSettings' is not exported from 'react-native' (imported as 'DevSettings').
+解决
+
+Error: Can't resolve 'react-native/Libraries/NewAppScreen'
 
 ```
-react-native-devsettings 模块依赖 DevSettings
-而 react-native-web 是放弃这个模块维护的
-
-所以要在 native 的入口文件去引用这个模块
+react-native-devsettings 一类原生端独有的配置需要放在 native 的入口文件去引用
 ```
 
-### [eslint] Plugin "react" was conflicted between ".eslintrc.js » plugin:react/jsx-runtime" and "BaseConfig » /Users/buddy/Documents/Coding/rngo/node_modules/eslint-config-react-app/base.js".
+解决
+
+Attempted import error: 'DevSettings' is not exported from 'react-native' (imported as 'DevSettings').
 
 ```
 React17 已经通过babel的形式去除了对于
@@ -83,22 +77,28 @@ plugin/jsx-runtime 是用来消除 react 必须引入的eslint警告的
 
 ```
 
+解决
+
+[eslint] Plugin "react" was conflicted between ".eslintrc.js » plugin:react/jsx-runtime" and "BaseConfig » /Users/buddy/Documents/Coding/rngo/node_modules/eslint-config-react-app/base.js".
+
+```
+报下面的错，就是给native段也添加了 "useTransformReactJSXExperimental": true 配置项，
+删除即可
+```
+
+[解决](https://github.com/facebook/create-react-app/issues/11825#issuecomment-1000454644)
+
 Compiling JS failed: 122980:12:invalid expression (possible JSX: pass -parse-jsx to parse) Buffer size 7162689 starts with: 766172205f5f42554e444c455f535441
-
-```
-web 端调通，跑原生端又遇到的问题，应该是jsx转译出现的问题
-删除 "useTransformReactJSXExperimental": true 即可
-```
-
-[参考社区](https://github.com/facebook/create-react-app/issues/11825#issuecomment-1000454644)
-
-### only default export is available soon
 
 ```
 webpack5 开始不支持以 key 的形式从 json 中导出变量
 ```
 
-### 注意事项
+解决
+
+only default export is available soon
+
+## 注意事项
 
 ```
 web编译的时候，除 src 下文件之外的更新都会跳过错误显示编译成功
