@@ -1,4 +1,4 @@
-# [![Netlify Status](https://api.netlify.com/api/v1/badges/bc65eeb5-b61d-475c-a386-d08ad5701559/deploy-status)](https://app.netlify.com/sites/rn-go/deploys) 现有 react-native 项目转 web 配置教程
+# 现有 react-native 项目转 web 配置教程<br>[![Netlify Status](https://api.netlify.com/api/v1/badges/bc65eeb5-b61d-475c-a386-d08ad5701559/deploy-status)](https://app.netlify.com/sites/rn-go/deploys)
 
 @See [doc](https://retool.com/blog/how-to-make-your-react-native-apps-work-on-the-web/)
 
@@ -100,4 +100,13 @@ webpack5 开始不支持以 key 的形式从 json 中导出变量
 web 编译的时候，除 src 下文件之外的更新都会跳过错误显示编译成功
 所以 web 项目能否运行还是依赖 src 下文件的状态，
 需要通过 src 下文件的变动来确定当前是否是一个正确的状态
+```
+
+## 部署 netlify 失败
+
+```
+Build script returned non-zero exit code: 2
+
+根据你的lock文件去设置打包命令
+如果是yarn.lock 必须使用yarn执行，否则会出现上面错误
 ```
