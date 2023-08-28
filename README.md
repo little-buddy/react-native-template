@@ -94,6 +94,23 @@ only default export is available soon
 webpack5 开始不支持以 key 的形式从 json 中导出变量
 ```
 
+[解决](https://github.com/software-mansion/react-native-reanimated/issues/4645#issuecomment-1680539078)
+export 'WithDecayConfig' (reexported as 'WithDecayConfig') was not found in './decay' (possible exports: withDecay)
+
+```
+回退版本 3.4.1
+```
+
+解决
+\_\_DEV\_\_ not defined
+
+```JS
+new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    __DEV__: process.env.NODE_ENV !== 'production' || true,
+})
+```
+
 ## 注意事项
 
 ```

@@ -27,6 +27,7 @@ module.exports = {
           '@/routers': ['./src/routers'],
           '@/store': ['./src/store'],
           '@/utils': ['./src/utils'],
+          '@/style': ['./src/style'],
         },
       },
     ],
