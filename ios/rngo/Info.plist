@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
+		<string>Pacifico-Regular.ttf</string>
 	</array>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>YOUR TEXT</string>
