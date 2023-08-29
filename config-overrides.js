@@ -47,7 +47,10 @@ module.exports = override(
   addWebpackModuleRule({
     test: /\.ttf$/,
     loader: 'url-loader', // or directly file-loader
-    include: path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
+    include: [
+      path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
+      path.resolve(__dirname, 'src'),
+    ],
   }),
 
   addBabelPresets([
