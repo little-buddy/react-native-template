@@ -1,3 +1,4 @@
+import { RouteTabName } from '@/constants';
 import Frineds from '@/pages/frineds';
 import Home from '@/pages/home';
 import Message from '@/pages/message';
@@ -23,8 +24,8 @@ const createRoute = (
 });
 
 export default [
-  createRoute('home', Home),
-  createRoute('friends', Frineds),
-  createRoute('message', Message),
-  createRoute('mine', Mine),
+  createRoute(RouteTabName.Home, Home),
+  createRoute(RouteTabName.Frineds, Frineds),
+  createRoute(RouteTabName.Message, Message),
+  createRoute(RouteTabName.Mine, Mine),
 ];

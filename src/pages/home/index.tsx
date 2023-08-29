@@ -101,7 +101,7 @@ function Index({ data = imgs }: PropsWithChildren<{ data?: any[] }>) {
         justifyContent: 'center',
       }}
     >
-      <AntdIcon name="home" size={30} color="#900" />
+      <AntdIcon name="home" size={30} color="#635df7" />
 
       <View style={{ marginVertical: 12 }}>
         <Carousel
