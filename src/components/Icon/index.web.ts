@@ -1,13 +1,13 @@
 // Use prebuilt version of RNVI in dist folder
 // @ts-ignore
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from 'react-native-vector-icons/dist/AntDesign';
 
 // Generate required css
 // @ts-ignore
 import iconFont from 'react-native-vector-icons/Fonts/AntDesign.ttf';
 const iconFontStyles = `@font-face {
   src: url(${iconFont});
-  font-family: FontAwesome;
+  font-family: AntDesign;
 }`;
 
 // Create stylesheet

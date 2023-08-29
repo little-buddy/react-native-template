@@ -11,6 +11,7 @@
     "podi": "npx react-native setup-ios-permissions && npx pod-install",
     "start:web": "react-app-rewired start",
     "build:web": "react-app-rewired build",
+    "postinstall": "npx patch-package",
     "test": "jest"
   },
   "main": "src/index.js",
@@ -72,7 +73,8 @@
     "prettier": "^2.4.1",
     "react-app-rewired": "^2.2.1",
     "react-test-renderer": "18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "url-loader": "^4.1.1"
   },
   "engines": {
     "node": ">=16"
