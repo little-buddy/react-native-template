@@ -26,6 +26,7 @@ export default () => {
       },
       tabBarActiveTintColor: '#635df7',
       tabBarInactiveTintColor: '#666666',
+      headerTitleAlign: 'center' as 'center',
     }),
     []
   );
