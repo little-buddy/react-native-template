@@ -23,9 +23,32 @@ const createRoute = (
   children,
 });
 
-export default [
+const routes = [
   createRoute(RouteTabName.Home, Home),
   createRoute(RouteTabName.Frineds, Frineds),
   createRoute(RouteTabName.Message, Message),
   createRoute(RouteTabName.Mine, Mine),
 ];
+
+const linkingScreens: Record<string, string> = {};
+
+routes.forEach(route => {
+  linkingScreens[route.name] = route.name.toLowerCase();
+});
+
+export const linking: any = {
+  prefixes: ['rngo://', 'https://localhost:3000'],
+  config: {
+    screens: {
+      Home: {
+        initialRouteName: 'Home',
+        screens: {
+          ...linkingScreens,
+        },
+      },
+      NotFound: '*',
+    },
+  },
+};
+
+export default routes;

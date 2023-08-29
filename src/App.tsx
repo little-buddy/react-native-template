@@ -7,6 +7,7 @@
 
 import { StatusBar, useColorScheme } from 'react-native';
 import '@/components/Icon';
+import '@/components/Text';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { Provider as ReactReduxProvider } from 'react-redux';
@@ -15,8 +16,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import RootComponent from '@/routers';
 import { persistor, store } from '@/store';
+import { linking } from '@/routers/config';
+import RootComponent from '@/routers';
+
 import { globalStyle } from '@/style';
 
 const Colors = {
@@ -41,12 +44,11 @@ function App(): JSX.Element {
       <ReactReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <GestureHandlerRootView style={globalStyle.flex1}>
-            <StatusBar
-              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-              backgroundColor={backgroundStyle.backgroundColor}
-            />
-
-            <NavigationContainer>
+            <NavigationContainer linking={linking}>
+              <StatusBar
+                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                backgroundColor={backgroundStyle.backgroundColor}
+              />
               <RootComponent />
             </NavigationContainer>
           </GestureHandlerRootView>

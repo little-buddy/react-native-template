@@ -1,5 +1,5 @@
 import { PropsWithChildren, useCallback } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Button } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import { useWindowDimensions } from '@/hooks';
 import Animated, {
@@ -12,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 // @ts-ignore
 import { AntdIcon } from '@/components/Icon';
+import { useNavigation } from '@react-navigation/native';
 
 const imgs = [
   'https://images.unsplash.com/photo-1692545921246-d36c3221518f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5MzIyNzU5MQ&ixlib=rb-4.0.3&q=80&w=1920',
@@ -72,6 +73,13 @@ const PageItem = ({
       ]}
     />
   );
+};
+
+const F0fButton = () => {
+  const navigation = useNavigation();
+
+  // @ts-ignore
+  return <Button title="404" onPress={() => navigation.navigate('NotFound')} />;
 };
 
 function Index({ data = imgs }: PropsWithChildren<{ data?: any[] }>) {
@@ -153,6 +161,8 @@ function Index({ data = imgs }: PropsWithChildren<{ data?: any[] }>) {
           ))}
         </View>
       </View>
+
+      <F0fButton />
     </View>
   );
 }

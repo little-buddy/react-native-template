@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "react-native-vector-icons": {
-      "platforms": {
-        "ios": ["AntDesign.ttf"]
-      }
-    }
-  }
-}
