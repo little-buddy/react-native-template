@@ -10,6 +10,8 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+// @ts-ignore
+import { AntdIcon } from '@/components/Icon';
 
 const imgs = [
   'https://images.unsplash.com/photo-1692545921246-d36c3221518f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5MzIyNzU5MQ&ixlib=rb-4.0.3&q=80&w=1920',
@@ -99,6 +101,8 @@ function Index({ data = imgs }: PropsWithChildren<{ data?: any[] }>) {
         justifyContent: 'center',
       }}
     >
+      <AntdIcon />
+
       <View style={{ marginVertical: 12 }}>
         <Carousel
           width={width}

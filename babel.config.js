@@ -3,14 +3,6 @@ module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
-      'import',
-      {
-        libraryName: 'lodash',
-        libraryDirectory: '',
-        camel2DashComponentName: false,
-      },
-    ],
-    [
       'module-resolver',
       {
         root: ['./src/'],
@@ -29,6 +21,14 @@ module.exports = {
           '@/utils': ['./src/utils'],
           '@/style': ['./src/style'],
         },
+      },
+    ],
+    [
+      'import',
+      {
+        libraryName: 'lodash',
+        libraryDirectory: '',
+        camel2DashComponentName: false,
       },
     ],
     'react-native-reanimated/plugin',

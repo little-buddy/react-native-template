@@ -6,6 +6,7 @@
  */
 
 import { StatusBar, useColorScheme } from 'react-native';
+import '@/components/Icon';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { Provider as ReactReduxProvider } from 'react-redux';
