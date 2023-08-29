@@ -121,6 +121,10 @@ IOS 下字体引入无效
 需要再 Copy Bundle Resources 中添加该文件
 ```
 
+## Feature
+
+- [ ] Font 压缩
+
 ## 注意事项
 
 ```
